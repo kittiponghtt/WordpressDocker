@@ -16,12 +16,13 @@ services:
   wordpress:
     depends_on:
       - db
-    image: wordpress
+    image: wordpress:5.9.3-php7.4-apache
     restart: always
     networks:
       - web_network
     volumes:
       - ./wordpress:/var/www/html
+      - ./config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     ports:
       - 8800:80
     environment:
